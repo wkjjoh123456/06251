@@ -4,6 +4,7 @@ package com.zjt.web;
 
 import com.github.pagehelper.PageHelper;
 import com.zjt.entity.Dfoodlist;
+import com.zjt.entity.Dfoodpar;
 import com.zjt.model.Dfoodtotallist;
 import com.zjt.model.JqgridBean;
 import com.zjt.model.PageRusult;
@@ -14,6 +15,7 @@ import com.zjt.util.StringUtil;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
@@ -27,6 +29,7 @@ import tk.mybatis.mapper.entity.Example;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/admin/food")
@@ -36,6 +39,7 @@ public class FoodController {
     private DfoodService dfoodService;
 
 
+/*页面跳转   food2.ftl  easyui分页*/
     @RequestMapping("/tofoodmanage")
     @RequiresPermissions(value = {"食品录入"})
     public String tofoodmanager() {
@@ -43,7 +47,7 @@ public class FoodController {
     }
 
     /**
-     * 分页查询食品信息
+     * jqgrid  分页查询食品信息(food.ftl)
      */
     @ResponseBody
     @RequestMapping(value = "/list")
@@ -90,6 +94,7 @@ public class FoodController {
 
         return resultmap;
     }
+    /*easyui 分页 查询  food2.ftl使用中*/
     @RequestMapping(value="/qlist",method = RequestMethod.POST)
     public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, Dfoodlist dfoodlist, HttpServletResponse response) throws Exception {
         PageBean pageBean = new PageBean(Integer.parseInt(page),Integer.parseInt(rows));
@@ -97,6 +102,10 @@ public class FoodController {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("fName", StringUtil.formatLike(dfoodlist.getfName()));
 
+        map.put("fIsquick", (dfoodlist.getfIsquick()));
+        map.put("fParentid", (dfoodlist.getfParentid()));
+
+        System.out.println(dfoodlist.getfName()+dfoodlist.getfIsquick()+dfoodlist.getfParentid());
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPagesize());
         map.forEach((key, value) -> {
@@ -113,6 +122,19 @@ public class FoodController {
         ResponseUtil.write(response,result);
 
 
+        return null;
+    }
+
+    /*查询父级id*/
+    @RequestMapping(value="/getParentid")
+    public String queryParentid(HttpServletResponse response) throws Exception{
+        List<Dfoodpar> dfoodpars = dfoodService.selectParentId();
+        System.out.println("____________________________________________");
+        JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray = JSONArray.fromObject(dfoodpars);
+        jsonObject.put("rows",jsonArray);
+        System.out.println(jsonArray);
+        ResponseUtil.write(response,jsonArray);
         return null;
     }
 }

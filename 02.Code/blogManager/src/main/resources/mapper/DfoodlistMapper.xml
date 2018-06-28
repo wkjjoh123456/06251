@@ -36,6 +36,12 @@
       <if test="fName!=null and fName!=''">
         and f_Name like #{fName}
       </if>
+      <if test="fIsquick!=null and fIsquic!=''">
+        and f_Isquick=#{fIsquick}
+      </if>
+      <if test="fParentid!=null and fParentid!=''">
+        and f_ParentId=#{fParentid}
+      </if>
     </where>
     <if test="start!=null and size !=null">
       limit #{start},#{size}
@@ -49,6 +55,12 @@
     <where>
       <if test="f_Name!=null and f_Name!='' ">
         and name like #{f_Name}
+      </if>
+      <if test="fIsquick!=null and fIsquic!=''">
+        and f_Isquick=#{fIsquick}
+      </if>
+      <if test="fParentid!=null and fParentid!=''">
+        and f_ParentId=#{fParentid}
       </if>
     </where>
   </select>

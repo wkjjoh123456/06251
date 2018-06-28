@@ -2,6 +2,7 @@ package com.zjt.service;
 
 
 import com.zjt.entity.Dfoodlist;
+import com.zjt.entity.Dfoodpar;
 import com.zjt.model.Dfoodtotallist;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface DfoodService extends IService<Dfoodlist>{
 
 
     public long getTotalfood(Map<String, Object> map);
+
+    public List<Dfoodpar> selectParentId();
 }

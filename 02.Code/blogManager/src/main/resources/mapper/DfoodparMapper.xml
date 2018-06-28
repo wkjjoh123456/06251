@@ -8,4 +8,7 @@
     <id column="fp_id" jdbcType="INTEGER" property="fpId" />
     <result column="fp_name" jdbcType="VARCHAR" property="fpName" />
   </resultMap>
+  <select id="selecTotal" resultMap="BaseResultMap">
+    SELECT fp_id,fp_name FROM djxt_food_parent;
+  </select>
 </mapper>
