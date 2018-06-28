@@ -1,6 +1,7 @@
 package com.zjt.service.impl;
 
 import com.zjt.entity.Dfoodlist;
+import com.zjt.model.Dfoodtotallist;
 import com.zjt.mapper.DfoodlistMapper;
 import com.zjt.service.DfoodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class DfoodServiceImpl extends BaseService<Dfoodlist> implements DfoodSer
 @Autowired
 private DfoodlistMapper dfoodlistMapper;
     @Override
-    public List<Dfoodlist> findfood(Map<String, Object> map) {
+    public List<Dfoodtotallist> findfood(Map<String, Object> map) {
         return dfoodlistMapper.findfood(map);
     }
 

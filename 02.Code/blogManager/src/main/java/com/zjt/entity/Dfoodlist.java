@@ -4,9 +4,12 @@ import javax.persistence.*;
 
 @Table(name = "djxt_food_list")
 public class Dfoodlist {
+
     /**
      * 食物id主键
      */
+
+
     @Id
     @Column(name = "id")
     private Integer id;

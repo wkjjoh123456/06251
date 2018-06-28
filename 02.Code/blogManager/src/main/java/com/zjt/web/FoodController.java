@@ -4,6 +4,7 @@ package com.zjt.web;
 
 import com.github.pagehelper.PageHelper;
 import com.zjt.entity.Dfoodlist;
+import com.zjt.model.Dfoodtotallist;
 import com.zjt.model.JqgridBean;
 import com.zjt.model.PageRusult;
 import com.zjt.service.DfoodService;
@@ -102,10 +103,11 @@ public class FoodController {
             System.out.println(key + ":" + value);
         });
         System.out.println("123");
-        List<Dfoodlist>  dfoodlists = dfoodService.findfood(map);
+        List<Dfoodtotallist>  dfoodtotallists = dfoodService.findfood(map);
+
         long total = dfoodService.getTotalfood(map);
         JSONObject result = new JSONObject();
-        JSONArray jsonArray = JSONArray.fromObject(dfoodlists);
+        JSONArray jsonArray = JSONArray.fromObject(dfoodtotallists);
         result.put("rows",jsonArray);
         result.put("total",total);
         ResponseUtil.write(response,result);
