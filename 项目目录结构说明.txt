@@ -1,0 +1,45 @@
+项目SVN配置库目录结构：
+
+ProjectName                           	        //项目名称，使用英文简写或缩写，单词之间不要空格，首字母大写                              
+    ├─01.Documents                 	        //项目相关的各类文档
+    │  ├─00.Standards                        //项目中各类规范，如设计规范、编码规范等
+    │  ├─01.ResourceResearch                 //研究
+    │  │  ├─01.BusinessResearch             //与该项目相关的业务性的研究资料或成果
+    │  │  └─02.TechnicalResearch            //与该项目相关技术类的研究资料或成果
+    │  ├─02.ProjectPlan                      //项目计划相关的文档
+    │  │  ├─01.Initiation          	        //项目启动相关的文档，如启动报告、项目预算等
+    │  │  └─02.Schedule                     //项目计划相关的文档，如项目进度计划、项目计划书等
+    │  ├─03.Requirements                     //需求相关文档
+    │  │  ├─01.CustomerRequirement          //客户的原始需求或资料
+    │  │  ├─02.OurProposal                  //项目初期由售前提出的建议书等
+    │  │  ├─03.RequirementDesign            //需求设计,如需求原型、核心业务工作图等
+    │  │  ├─04.RequirementSpecification     //分析整理后的软件需求规格说明书
+    │  │  └─05.RequirementChangeRecord      //需求变更记录
+    │  ├─04.Design                           //设计相关文档
+    │  │  ├─01.UIDesign                     //用户界面设计
+    │  │  ├─02.DatabaseDesign               //数据库设计
+    │  │  │  ├─01.DBDesign                 //数据库设计，存放数据库相关设计文件
+    │  │  │  ├─02.DBScript			//数据脚本
+    │  │  │  └─03.TestData                 //存放客户数据，测试数据
+    │  │  └─03.DesignDocument               //设计说明书
+    │  ├─05.Test                             //测试相关文档
+    │  │  ├─01.TestPlan			//测试计划
+    │  │  ├─02.UseCase			//测试用例
+    │  │  ├─03.BugRecord			//测试bug
+    │  │  └─04.TestReport			//测试报告，如测试分析报告
+    │  ├─06.ProjectManagement                //项目管理相关文档
+    │  │  ├─01.MeetingMinutes               //会议记录
+    │  │  ├─02.Report			//项目中各类报告
+    │  │  │  ├─01.WeeklyReport		//项目中的各类周报（包含项目经理的项目周报、测试周报、PPQA周报、CM周报等）
+    │  │  │  ├─02.MilestoneReport		//里程碑报告（同上）
+    │  │  │  └─03.SummaryReport		//项目总结报告（同上）
+    │  │  ├─03.Issue                        //项目问题
+    │  │  ├─04.Risk                         //项目风险
+    │  │  └─05.Communication                //沟通相关的文档，如沟通记录，项目成员通讯录，现场实施确认单等
+    │  └─07.Deliverable                      //交付客户相关
+    │      ├─FisrtDelivery-YYYYMMDD          //第一次交付客户的成果物，包含交付说明
+    │      ├─SecondDelivery-YYYYMMDD         //第二次交付客户的成果物，包含交付说明
+    │      └─FinallyDelivery-YYYYMMDD        //最终交付客户的成果物，包含交付说明
+    └─02.Code                                 //项目代码
+ 
+目录导出命令：tree /f>1.txt
