@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjt.mapper.DfoodparMapper">
+  <resultMap id="BaseResultMap" type="com.zjt.entity.Dfoodpar">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="fp_id" jdbcType="INTEGER" property="fpId" />
+    <result column="fp_name" jdbcType="VARCHAR" property="fpName" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjt.mapper.DfoodlistMapper">
+  <resultMap id="BaseResultMap" type="com.zjt.entity.Dfoodlist">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="f_Isquick" jdbcType="INTEGER" property="fIsquick" />
+    <result column="f_ParentId" jdbcType="INTEGER" property="fParentid" />
+    <result column="f_Pro" jdbcType="DECIMAL" property="fPro" />
+    <result column="f_Car" jdbcType="DECIMAL" property="fCar" />
+    <result column="f_Fat" jdbcType="DECIMAL" property="fFat" />
+    <result column="f_Ene" jdbcType="DECIMAL" property="fEne" />
+    <result column="f_Name" jdbcType="VARCHAR" property="fName" />
+  </resultMap>
+
+  <select id="findfood" parameterType="map" resultMap="BaseResultMap">
+    select id,f_Isquick,f_ParentId,f_Pro,f_Car,f_Fat,f_Ene,f_Name,fp_id from djxt_food_list
+    LEFT JOIN djxt_food_parent  ON  djxt_food_list.f_ParentId=djxt_food_parent.fp_id
+    <where>
+      <if test="fName!=null and fName!=''">
+        and f_Name like #{fName}
+      </if>
+    </where>
+    <if test="start!=null and size !=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
+  <select id="getTotalfood" parameterType="Map" resultType="Long">
+    select count(*) from djxt_food_list
+    <where>
+      <if test="f_Name!=null and f_Name!='' ">
+        and name like #{f_Name}
+      </if>
+    </where>
+  </select>
+</mapper>
