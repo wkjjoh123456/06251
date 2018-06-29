@@ -2,13 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjt.mapper.DfoodparMapper">
   <resultMap id="BaseResultMap" type="com.zjt.entity.Dfoodpar">
-    <!--
-      WARNING - @mbg.generated
-    -->
     <id column="fp_id" jdbcType="INTEGER" property="fpId" />
     <result column="fp_name" jdbcType="VARCHAR" property="fpName" />
   </resultMap>
   <select id="selecTotal" resultMap="BaseResultMap">
     SELECT fp_id,fp_name FROM djxt_food_parent;
   </select>
+
+  <select id="selectKind"  parameterType="map" resultMap="BaseResultMap">
+    SELECT fp_id,fp_name FROM djxt_food_parent
+    <where>
+      <if test="fpName!=null and fpName!=''">
+        and fp_name like #{fpName}
+      </if>
+    </where>
+    <if test="start!=null and size !=null">
+      limit #{start},#{size}
+    </if>
+  </select>
+
+
+
+  <select id="getTotalfoodKind" parameterType="Map" resultType="Long">
+    select count(*) from djxt_food_parent
+    <where>
+      <if test="fpName!=null and fpName!='' ">
+        and fp_name like #{fpName}
+      </if>
+    </where>
+  </select>
+
+  <update id="updateFoodKind" parameterType="map">
+    update djxt_food_parent set fp_name = #{fpName} where fp_id=#{fpId}
+  </update>
+
+<insert id="addFoodKind" parameterType="map">
+  insert into djxt_food_parent(fp_name) VALUES (#{fpName})
+</insert>
+  <delete id="deleteFoodKind" parameterType="String">
+    delete from djxt_food_parent where fp_id=#{id}
+  </delete>
 </mapper>

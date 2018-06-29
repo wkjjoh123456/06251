@@ -53,8 +53,8 @@
   <select id="getTotalfood" parameterType="Map" resultType="Long">
     select count(*) from djxt_food_list
     <where>
-      <if test="f_Name!=null and f_Name!='' ">
-        and name like #{f_Name}
+      <if test="fName!=null and fName!='' ">
+        and f_Name like #{fName}
       </if>
       <if test="fIsquick!=null and fIsquic!=''">
         and f_Isquick=#{fIsquick}
@@ -64,4 +64,43 @@
       </if>
     </where>
   </select>
+
+  <insert id="addFood" parameterType="Map">
+    INSERT  INTO djxt_food_list(f_Isquick,f_ParentId,f_Pro,f_Car,f_Fat,f_Ene,f_Name)
+    VALUES(#{fIsquick},#{fParentid},#{fPro},#{fCar},#{fFat},#{fEne},#{fName})
+  </insert>
+  <delete id = "deleteFood" parameterType="String">
+
+    delete from djxt_food_list where id=#{id}
+  </delete>
+
+
+  <update id="updateFood" parameterType="Map">
+    update djxt_food_list
+    <set>
+      <if test="fName!=null and fName!='' ">
+        f_Name=#{fName},
+      </if>
+      <if test="fIsquick!=null and fIsquick!='' ">
+        f_Isquick=#{fIsquick},
+      </if>
+      <if test="fParentid!=null and fParentid!='' ">
+        f_Parentid=#{fParentid},
+      </if>
+      <if test="fPro!=null and fPro!='' ">
+        f_Pro=#{fPro},
+      </if>
+      <if test="fFat!=null and fFat!='' ">
+        f_Fat=#{fFat},
+      </if>
+      <if test="fCar!=null and fCar!='' ">
+        f_Car=#{fCar},
+      </if>
+      <if test="fEne!=null and fEne!='' ">
+        f_Ene=#{fEne},
+      </if>
+    </set>
+    where id=#{id}
+
+  </update>
 </mapper>

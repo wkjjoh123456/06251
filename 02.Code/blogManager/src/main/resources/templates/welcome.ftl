@@ -145,7 +145,6 @@
 
 <#--把index.js提到页面中，为了使用freemarker-->
 <script type="text/javascript" >
-
     var $,tab,dataStr,layer;
     layui.config({
         base : "static/js/"
@@ -163,7 +162,6 @@
             url : "user/loadMenuInfo?parentId=1",
             method: "post"
         });
-
         //通过顶部菜单获取左侧二三级菜单   注：此处只做演示之用，实际开发中通过接口传参的方式获取导航数据
         function getData(json){
             $.getJSON(tab.tabConfig.url,function(data){
@@ -295,12 +293,6 @@
             window.sessionStorage.removeItem("menu");
             window.sessionStorage.removeItem("curmenu");
         }
-
-
-
-
-
-
 
         //锁屏相关js 原来位置在cache.js中
         //锁屏

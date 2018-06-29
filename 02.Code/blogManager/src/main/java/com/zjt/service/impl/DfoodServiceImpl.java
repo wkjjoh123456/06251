@@ -33,4 +33,44 @@ private DfoodparMapper dfoodparMapper;
     public List<Dfoodpar> selectParentId() {
         return dfoodparMapper.selecTotal();
     }
+
+    @Override
+    public int addFood(Dfoodlist dfoodlist) {
+        return dfoodlistMapper.addFood(dfoodlist);
+    }
+
+    @Override
+    public int deleteFood(String id) {
+        return dfoodlistMapper.deleteFood(id);
+    }
+
+    @Override
+    public int updateFood(Dfoodlist dfoodlist) {
+        return dfoodlistMapper.updateFood(dfoodlist);
+    }
+
+    @Override
+    public List<Dfoodpar> findFoodKind(Map<String, Object> map) {
+        return dfoodparMapper.selectKind(map);
+    }
+
+    @Override
+    public long getTotalFoodKind(Map<String, Object> map) {
+        return dfoodparMapper.getTotalfoodKind(map);
+    }
+
+    @Override
+    public int addFoodKind(Dfoodpar dfoodpar) {
+        return dfoodparMapper.addFoodKind(dfoodpar);
+    }
+
+    @Override
+    public int updateFoodKind(Dfoodpar dfoodpar) {
+        return dfoodparMapper.updateFoodKind(dfoodpar);
+    }
+
+    @Override
+    public int deleteFoodKind(String id) {
+        return dfoodparMapper.deleteFoodKind(id);
+    }
 }

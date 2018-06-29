@@ -12,8 +12,8 @@ import java.util.Map;
 public interface DfoodlistMapper extends MyMapper<Dfoodlist> {
 
     List<Dfoodtotallist> findfood(Map<String, Object> map);
-
-
-
     Long getTotalfood(Map<String, Object> map);
+    int addFood(Dfoodlist dfoodlist);
+    int deleteFood(String id);
+    int updateFood(Dfoodlist dfoodlist);
 }
